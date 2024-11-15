@@ -1,20 +1,43 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { FaEnvelope, FaLock, FaGoogle, FaArrowRight } from 'react-icons/fa';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import Lottie from 'lottie-react';
 import animationData from '../assets/annimation/login.json';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const { signIn, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log('Sign In Data:', data);
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    // if (!email || !password) {
+    //   setError('Email and password are required');
+    //   return;
+    // }
+    // try {
+      const result = await signIn(email, password);
+      console.log(result.user);
+      navigate('/');
+    // } catch (err) {
+    //   console.error(err);
+    //   setError('Invalid email or password');
+    // }
   };
 
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign-In triggered');
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithGoogle();
+      console.log(result.user);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -42,19 +65,17 @@ const SignIn = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSignIn} className="space-y-4">
             {/* Email Field */}
             <div className="relative">
               <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
               <input
                 type="email"
                 placeholder="Email"
-                {...register('email', { required: 'Email is required' })}
-                className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#68b5c2] focus:outline-none ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                }`}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#68b5c2] focus:outline-none ${error && !email ? 'border-red-500' : 'border-gray-300'}`}
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
 
             {/* Password Field */}
@@ -63,10 +84,9 @@ const SignIn = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                {...register('password', { required: 'Password is required' })}
-                className={`w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-[#68b5c2] focus:outline-none ${
-                  errors.password ? 'border-red-500' : 'border-gray-300'
-                }`}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={`w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-[#68b5c2] focus:outline-none ${error && !password ? 'border-red-500' : 'border-gray-300'}`}
               />
               <button
                 type="button"
@@ -75,8 +95,10 @@ const SignIn = () => {
               >
                 {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
               </button>
-              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
             </div>
+
+            {/* Error Message */}
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
             {/* Remember Me and Forgot Password */}
             <div className="flex justify-between items-center">
@@ -100,7 +122,7 @@ const SignIn = () => {
           </form>
 
           <p className="text-center text-gray-600 mt-4 text-sm">
-            Dont have an account?{' '}
+            Don't have an account?{' '}
             <a href="/signup" className="text-[#68b5c2] hover:underline">
               Sign up
             </a>

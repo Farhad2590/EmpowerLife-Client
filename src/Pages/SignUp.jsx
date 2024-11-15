@@ -1,8 +1,10 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { FaUser, FaEnvelope, FaLock, FaPhone, FaGoogle } from "react-icons/fa";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineArrowRight } from "react-icons/ai";
 import Lottie from "lottie-react";
 import animationData from "../assets/annimation/login.json";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,20 +14,35 @@ const SignUp = () => {
     mobile: "",
     password: "",
   });
+  const navigate = useNavigate()
+  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } = useAuth()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    const form = e.target
+    const email = form.email.value
+    // const name = form.name.value
+    // const photo = form.photo.value
+    const pass = form.password.value
     console.log("Form Data:", formData);
+    const result = await createUser(email, pass)
+    console.log(result.user);
+    navigate('/');
     // Add your submit logic here
   };
 
-  const handleGoogleSignUp = () => {
-    console.log("Google Signup Triggered");
-    // Add your Google SignUp logic here
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithGoogle();
+      console.log(result.user);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -43,7 +60,7 @@ const SignUp = () => {
 
           {/* Google Sign Up */}
           <button
-            onClick={handleGoogleSignUp}
+            onClick={handleGoogleSignIn}
             className="flex items-center justify-center w-full border border-gray-300 rounded-lg p-2 mb-4 hover:bg-gray-50 transition"
           >
             <FaGoogle className="text-xl text-gray-500 mr-2" />

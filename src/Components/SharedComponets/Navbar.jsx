@@ -7,8 +7,10 @@ import useAuth from "../../hooks/useAuth";
 function Navbar() {
   const { logOut, user } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
     <nav
@@ -56,7 +58,7 @@ function Navbar() {
           <div className="relative">
             {/* Avatar and Dropdown */}
             <button
-              onClick={toggleMobileMenu}
+              onClick={toggleDropdown}
               className="flex items-center space-x-2"
             >
               <img
@@ -64,20 +66,22 @@ function Navbar() {
                 alt={user.displayName}
                 className="rounded-full w-10 h-10"
               />
-              <span className="text-white">{user.displayName}</span>
             </button>
 
-            {isMobileMenuOpen && (
-              <div className="absolute bg-white text-black rounded shadow-md right-0 mt-2 w-40">
+            {isDropdownOpen && (
+              <div
+                className="absolute bg-white text-black rounded shadow-md right-0 mt-2 w-40 z-50" // z-index ensures dropdown is on top
+                style={{ top: "100%" }} // Position above the avatar (100% means full height of the avatar)
+              >
+                <div className="px-4 py-2 text-black">
+                  <span>{user.displayName}</span> {/* Display username */}
+                </div>
                 <button
-                  onClick={() => {
-                    logOut();
-                    toggleMobileMenu();
-                  }}
-                  className=" px-2 py-2 hover:bg-gray-200 w-full text-left flex items-center space-x-1"
+                  onClick={logOut}
+                  className="px-2 py-2 hover:bg-gray-200 w-full text-left flex items-center space-x-1"
                 >
                   <AiOutlineLogout />
-                  <span>Logout</span>
+                  Logout
                 </button>
               </div>
             )}
@@ -139,7 +143,7 @@ function Navbar() {
             <button
               onClick={() => {
                 logOut();
-                toggleMobileMenu();
+                toggleMobileMenu(); // Close the menu after logout
               }}
               className="hover:bg-[#2997a9] text-white px-3 py-2 rounded flex items-center"
             >
