@@ -53,7 +53,7 @@ const SignIn = () => {
             onClick={handleGoogleSignIn}
             className="flex items-center justify-center w-full bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-100 transition mb-4"
           >
-            <FaGoogle className="mr-2 text-red-500" />
+            <FaGoogle className="mr-2 text-gray-500" />
             Continue with Google
           </button>
 
