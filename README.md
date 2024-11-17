@@ -1,8 +1,18 @@
-# React + Vite
+# EmpowerLife
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+EmpowerLife is an assistive equipment platform designed to enhance the lives of individuals with disabilities. Our mission is to provide innovative and accessible tools to empower independence, improve quality of life, and support daily activities with ease.
 
-Currently, two official plugins are available:
+## Features
+- A wide range of assistive equipment options.
+- User-friendly interface for easy navigation.
+- Detailed product descriptions and usage guides.
+- Secure and seamless purchase experience.
+- Personalized recommendations based on user needs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React.js
+- Tailwind CSS
+- Node.js
+- Express.js
+- MongoDB
