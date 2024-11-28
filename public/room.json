@@ -2,17 +2,17 @@
     {
         "id": "001",
         "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "2nd Floor",
         "blockName": "Block A",
         "apartmentNo": "A-201",
         "rentPerMonth": 450,
         "size": 320,
         "gallery": [
-            "https://i.ibb.co.com/vL3c4j9/studio-apartment-1.png",
-            "https://i.ibb.co.com/pLrRv1W/studio-apartment-2.png",
-            "https://i.ibb.co.com/PzhkKTP/studio-apartment-3.png",
-            "https://i.ibb.co.com/64PSr1C/studio-apartment-4.png"
+            "https://i.ibb.co.com/LS6vSS0/studio-apartment-2.png",
+            "https://i.ibb.co.com/rGf3dg9/studio-apartment-3.png",
+            "https://i.ibb.co.com/fHwGJdJ/studio-apartment-4.png",
+            "https://i.ibb.co.com/7vdVbhy/studio-apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -36,17 +36,17 @@
     {
         "id": "002",
         "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "4th Floor",
         "blockName": "Block B",
         "apartmentNo": "B-402",
         "rentPerMonth": 480,
         "size": 350,
         "gallery": [
-            "https://i.ibb.co.com/bRzYWR1/studio-apartment-5.png",
-            "https://i.ibb.co.com/4p0xtRw/studio-apartment-6.png",
-            "https://i.ibb.co.com/8j6Shxf/studio-apartment-7.png",
-            "https://i.ibb.co.com/mvQJLh2/studio-apartment-8.png"
+            "https://i.ibb.co.com/LS6vSS0/studio-apartment-2.png",
+            "https://i.ibb.co.com/rGf3dg9/studio-apartment-3.png",
+            "https://i.ibb.co.com/fHwGJdJ/studio-apartment-4.png",
+            "https://i.ibb.co.com/7vdVbhy/studio-apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -70,17 +70,17 @@
     {
         "id": "003",
         "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "3rd Floor",
         "blockName": "Block C",
         "apartmentNo": "C-303",
         "rentPerMonth": 500,
         "size": 400,
         "gallery": [
-            "https://i.ibb.co.com/DDtkZfb/studio-apartment-9.png",
-            "https://i.ibb.co.com/XzbFHQr/studio-apartment-10.jpg",
-            "https://i.ibb.co.com/Pg7gD0T/studio-apartment-11.png",
-            "https://i.ibb.co.com/pXMdGsf/studio-apartment-12.png"
+            "https://i.ibb.co.com/LS6vSS0/studio-apartment-2.png",
+            "https://i.ibb.co.com/rGf3dg9/studio-apartment-3.png",
+            "https://i.ibb.co.com/fHwGJdJ/studio-apartment-4.png",
+            "https://i.ibb.co.com/7vdVbhy/studio-apartment-5.png"
         ],
         "facilities": [
             "Gym",
@@ -104,17 +104,17 @@
     {
         "id": "004",
         "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "5th Floor",
         "blockName": "Block D",
         "apartmentNo": "D-504",
         "rentPerMonth": 520,
         "size": 450,
         "gallery": [
-            "https://i.ibb.co.com/vL3c4j9/studio-apartment-1.png",
-            "https://i.ibb.co.com/pLrRv1W/studio-apartment-2.png",
-            "https://i.ibb.co.com/PzhkKTP/studio-apartment-3.png",
-            "https://i.ibb.co.com/64PSr1C/studio-apartment-4.png"
+            "https://i.ibb.co.com/LS6vSS0/studio-apartment-2.png",
+            "https://i.ibb.co.com/rGf3dg9/studio-apartment-3.png",
+            "https://i.ibb.co.com/fHwGJdJ/studio-apartment-4.png",
+            "https://i.ibb.co.com/7vdVbhy/studio-apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -136,87 +136,19 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "005",
-        "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "1st Floor",
-        "blockName": "Block E",
-        "apartmentNo": "E-105",
-        "rentPerMonth": 470,
-        "size": 380,
-        "gallery": [
-            "https://i.ibb.co.com/bRzYWR1/studio-apartment-5.png",
-            "https://i.ibb.co.com/4p0xtRw/studio-apartment-6.png",
-            "https://i.ibb.co.com/8j6Shxf/studio-apartment-7.png",
-            "https://i.ibb.co.com/mvQJLh2/studio-apartment-8.png"
-        ],
-        "facilities": [
-            "Parking",
-            "Security",
-            "Garden Access"
-        ],
-        "rooms": {
-            "bedrooms": 0,
-            "bathrooms": 1
-        },
-        "furnishingStatus": "Unfurnished",
-        "availabilityStatus": "Available",
-        "nearbyAmenities": [
-            "Bus Stop",
-            "Cafe",
-            "Library"
-        ],
-        "rentDeposit": 940,
-        "petPolicy": "No Pets Allowed"
-    },
-    {
-        "id": "006",
-        "category": "Studio Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "6th Floor",
-        "blockName": "Block F",
-        "apartmentNo": "F-606",
-        "rentPerMonth": 550,
-        "size": 500,
-        "gallery": [
-            "https://i.ibb.co.com/DDtkZfb/studio-apartment-9.png",
-            "https://i.ibb.co.com/XzbFHQr/studio-apartment-10.jpg",
-            "https://i.ibb.co.com/Pg7gD0T/studio-apartment-11.png",
-            "https://i.ibb.co.com/pXMdGsf/studio-apartment-12.png"
-        ],
-        "facilities": [
-            "Parking",
-            "Elevator",
-            "Rooftop Access"
-        ],
-        "rooms": {
-            "bedrooms": 0,
-            "bathrooms": 1
-        },
-        "furnishingStatus": "Furnished",
-        "availabilityStatus": "Occupied",
-        "nearbyAmenities": [
-            "Shopping Mall",
-            "Restaurant",
-            "Gym"
-        ],
-        "rentDeposit": 1100,
-        "petPolicy": "Small Pets Allowed"
-    },
-    {
         "id": "007",
         "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "3rd Floor",
         "blockName": "Block G",
         "apartmentNo": "G-301",
         "rentPerMonth": 750,
         "size": 600,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/BZ8hSLN/1-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/ssXJ0YR/1-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/GRTGb6J/1-Bedroom-Apartment-4.png",
+            "https://i.ibb.co.com/R6wdwtX/1-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -240,17 +172,17 @@
     {
         "id": "008",
         "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "4th Floor",
         "blockName": "Block H",
         "apartmentNo": "H-402",
         "rentPerMonth": 780,
         "size": 650,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/BZ8hSLN/1-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/ssXJ0YR/1-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/GRTGb6J/1-Bedroom-Apartment-4.png",
+            "https://i.ibb.co.com/R6wdwtX/1-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Gym",
@@ -274,17 +206,17 @@
     {
         "id": "009",
         "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "2nd Floor",
         "blockName": "Block I",
         "apartmentNo": "I-203",
         "rentPerMonth": 800,
         "size": 700,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/BZ8hSLN/1-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/ssXJ0YR/1-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/GRTGb6J/1-Bedroom-Apartment-4.png",
+            "https://i.ibb.co.com/R6wdwtX/1-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Swimming Pool",
@@ -308,17 +240,17 @@
     {
         "id": "010",
         "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "5th Floor",
         "blockName": "Block J",
         "apartmentNo": "J-504",
         "rentPerMonth": 820,
         "size": 750,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/BZ8hSLN/1-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/ssXJ0YR/1-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/GRTGb6J/1-Bedroom-Apartment-4.png",
+            "https://i.ibb.co.com/R6wdwtX/1-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -340,87 +272,19 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "011",
-        "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "1st Floor",
-        "blockName": "Block K",
-        "apartmentNo": "K-105",
-        "rentPerMonth": 730,
-        "size": 620,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Garden Access",
-            "Security",
-            "Storage"
-        ],
-        "rooms": {
-            "bedrooms": 1,
-            "bathrooms": 1
-        },
-        "furnishingStatus": "Semi-Furnished",
-        "availabilityStatus": "Occupied",
-        "nearbyAmenities": [
-            "School",
-            "Supermarket",
-            "Park"
-        ],
-        "rentDeposit": 1460,
-        "petPolicy": "No Pets Allowed"
-    },
-    {
-        "id": "012",
-        "category": "1-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "6th Floor",
-        "blockName": "Block L",
-        "apartmentNo": "L-606",
-        "rentPerMonth": 850,
-        "size": 800,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Rooftop Access",
-            "Elevator",
-            "Parking"
-        ],
-        "rooms": {
-            "bedrooms": 1,
-            "bathrooms": 1
-        },
-        "furnishingStatus": "Furnished",
-        "availabilityStatus": "Available",
-        "nearbyAmenities": [
-            "Metro Station",
-            "Restaurant",
-            "Shopping Mall"
-        ],
-        "rentDeposit": 1700,
-        "petPolicy": "Small Pets Allowed"
-    },
-    {
         "id": "013",
         "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "4th Floor",
         "blockName": "Block M",
         "apartmentNo": "M-401",
         "rentPerMonth": 1200,
         "size": 900,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/6Jv7CLf/2-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/XttmQX9/2-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/gm9zHVJ/2-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/yQfHrz6/2-Bedroom-Apartment-4.png"
         ],
         "facilities": [
             "Parking",
@@ -444,17 +308,17 @@
     {
         "id": "014",
         "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "3rd Floor",
         "blockName": "Block N",
         "apartmentNo": "N-302",
         "rentPerMonth": 1250,
         "size": 950,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/6Jv7CLf/2-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/XttmQX9/2-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/gm9zHVJ/2-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/yQfHrz6/2-Bedroom-Apartment-4.png"
         ],
         "facilities": [
             "Swimming Pool",
@@ -478,17 +342,17 @@
     {
         "id": "015",
         "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "5th Floor",
         "blockName": "Block O",
         "apartmentNo": "O-503",
         "rentPerMonth": 1300,
         "size": 1000,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/6Jv7CLf/2-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/XttmQX9/2-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/gm9zHVJ/2-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/yQfHrz6/2-Bedroom-Apartment-4.png"
         ],
         "facilities": [
             "Fitness Center",
@@ -512,17 +376,17 @@
     {
         "id": "016",
         "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "2nd Floor",
         "blockName": "Block P",
         "apartmentNo": "P-204",
         "rentPerMonth": 1350,
         "size": 1100,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/6Jv7CLf/2-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/XttmQX9/2-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/gm9zHVJ/2-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/yQfHrz6/2-Bedroom-Apartment-4.png"
         ],
         "facilities": [
             "Storage Unit",
@@ -544,87 +408,19 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "017",
-        "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "6th Floor",
-        "blockName": "Block Q",
-        "apartmentNo": "Q-605",
-        "rentPerMonth": 1400,
-        "size": 1150,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Rooftop Access",
-            "Elevator",
-            "Parking"
-        ],
-        "rooms": {
-            "bedrooms": 2,
-            "bathrooms": 2
-        },
-        "furnishingStatus": "Semi-Furnished",
-        "availabilityStatus": "Occupied",
-        "nearbyAmenities": [
-            "Shopping Mall",
-            "School",
-            "Park"
-        ],
-        "rentDeposit": 2800,
-        "petPolicy": "No Pets Allowed"
-    },
-    {
-        "id": "018",
-        "category": "2-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "1st Floor",
-        "blockName": "Block R",
-        "apartmentNo": "R-106",
-        "rentPerMonth": 1280,
-        "size": 1200,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Garden Access",
-            "Security",
-            "Storage Unit"
-        ],
-        "rooms": {
-            "bedrooms": 2,
-            "bathrooms": 2
-        },
-        "furnishingStatus": "Furnished",
-        "availabilityStatus": "Available",
-        "nearbyAmenities": [
-            "Park",
-            "School",
-            "Grocery Store"
-        ],
-        "rentDeposit": 2560,
-        "petPolicy": "Small Pets Allowed"
-    },
-    {
         "id": "019",
         "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "5th Floor",
         "blockName": "Block S",
         "apartmentNo": "S-501",
         "rentPerMonth": 1800,
         "size": 1300,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/HXWQDVX/3-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/J2Vx40d/3-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/6F54c4W/3-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/T0nsn61/3-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Parking",
@@ -648,17 +444,17 @@
     {
         "id": "020",
         "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "4th Floor",
         "blockName": "Block T",
         "apartmentNo": "T-402",
         "rentPerMonth": 1850,
         "size": 1400,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/HXWQDVX/3-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/J2Vx40d/3-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/6F54c4W/3-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/T0nsn61/3-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Swimming Pool",
@@ -682,17 +478,17 @@
     {
         "id": "021",
         "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "6th Floor",
         "blockName": "Block U",
         "apartmentNo": "U-603",
         "rentPerMonth": 1900,
         "size": 1500,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/HXWQDVX/3-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/J2Vx40d/3-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/6F54c4W/3-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/T0nsn61/3-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Fitness Center",
@@ -716,17 +512,17 @@
     {
         "id": "022",
         "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
+        "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "3rd Floor",
         "blockName": "Block V",
         "apartmentNo": "V-304",
         "rentPerMonth": 1950,
         "size": 1600,
         "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
+            "https://i.ibb.co.com/HXWQDVX/3-Bedroom-Apartment-1.png",
+            "https://i.ibb.co.com/J2Vx40d/3-Bedroom-Apartment-2.png",
+            "https://i.ibb.co.com/6F54c4W/3-Bedroom-Apartment-3.png",
+            "https://i.ibb.co.com/T0nsn61/3-Bedroom-Apartment-5.png"
         ],
         "facilities": [
             "Storage Unit",
@@ -746,73 +542,5 @@
         ],
         "rentDeposit": 3900,
         "petPolicy": "Pets Allowed"
-    },
-    {
-        "id": "023",
-        "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "2nd Floor",
-        "blockName": "Block W",
-        "apartmentNo": "W-205",
-        "rentPerMonth": 2000,
-        "size": 1700,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Rooftop Access",
-            "Elevator",
-            "Parking"
-        ],
-        "rooms": {
-            "bedrooms": 3,
-            "bathrooms": 3
-        },
-        "furnishingStatus": "Semi-Furnished",
-        "availabilityStatus": "Occupied",
-        "nearbyAmenities": [
-            "Shopping Mall",
-            "School",
-            "Park"
-        ],
-        "rentDeposit": 4000,
-        "petPolicy": "No Pets Allowed"
-    },
-    {
-        "id": "024",
-        "category": "3-Bedroom Apartment",
-        "image": "https://i.ibb.co.com/0VwJMjf/image1.png",
-        "floorNo": "1st Floor",
-        "blockName": "Block X",
-        "apartmentNo": "X-106",
-        "rentPerMonth": 1880,
-        "size": 1800,
-        "gallery": [
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png",
-            "https://i.ibb.co.com/0VwJMjf/image1.png"
-        ],
-        "facilities": [
-            "Garden Access",
-            "Security",
-            "Storage Unit"
-        ],
-        "rooms": {
-            "bedrooms": 3,
-            "bathrooms": 2
-        },
-        "furnishingStatus": "Furnished",
-        "availabilityStatus": "Available",
-        "nearbyAmenities": [
-            "Park",
-            "School",
-            "Grocery Store"
-        ],
-        "rentDeposit": 3760,
-        "petPolicy": "Small Pets Allowed"
     }
 ]
