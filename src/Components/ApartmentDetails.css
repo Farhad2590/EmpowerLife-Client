@@ -1,0 +1,30 @@
+.unique-header {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.unique-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007BFF;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+.unique-header:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+/* .unique-header {
+    font-weight: bold;
+    font-size: 2rem;
+
+} */
+.unique-header:hover {
+    font-size: 2.5rem;
+    color: #007BFF;
+}
+

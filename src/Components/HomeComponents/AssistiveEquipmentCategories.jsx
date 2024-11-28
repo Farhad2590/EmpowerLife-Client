@@ -60,14 +60,7 @@ const AssistiveEquipmentCategories = () => {
           </div>
         ))}
       </div>
-      {/* {selectedCategory && (
-        <div className="mt-6 text-center bg-teal-50 p-4 rounded-lg">
-          <h4 className="text-lg font-semibold text-[#86c7d2]">
-            Selected Category: {selectedCategory}
-          </h4>
-          <FaChevronRight className="inline-block text-[#86c7d2] ml-2" />
-        </div>
-      )} */}
+      
     </div>
   );
 };
