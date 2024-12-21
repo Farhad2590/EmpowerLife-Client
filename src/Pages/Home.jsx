@@ -3,8 +3,8 @@ import Slider from "../Components/HomeComponents/Slider";
 import AssistiveEquipmentCategories from "../Components/HomeComponents/AssistiveEquipmentCategories";
 import WhyChooseUs from "../Components/HomeComponents/WhyChooseUs";
 import NewsletterSignup from "../Components/HomeComponents/NewsletterSignup";
-import SpecialOffersAndDiscounts from "../Components/HomeComponents/SpecialOffersAndDiscounts";
 import BestSellerCard from "../Components/HomeComponents/BestSellerCard";
+import Coupons from "../Components/HomeComponents/Coupons";
 
 const Home = () => {
     return (
@@ -21,10 +21,11 @@ const Home = () => {
         >
             <Slider />
             <AssistiveEquipmentCategories/>
-            <SpecialOffersAndDiscounts/>
+            <Coupons/>
             <BestSellerCard/>
             <WhyChooseUs/>
             <NewsletterSignup/>
+            
         </Box>
     );
 };

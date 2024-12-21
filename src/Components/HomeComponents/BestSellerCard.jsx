@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { FaShoppingCart, FaCheckCircle, FaStar } from 'react-icons/fa';
 import DynamicHeader from '../SharedComponets/DynamicHeader';
+import axios from 'axios';
 
 const BestSellerCard = () => {
     const [bestSellers, setBestSellers] = useState([]);
-
-    useEffect(() => {
-        fetch('/data.json')
-            .then((response) => response.json())
-            .then((data) => {
+     useEffect(() => {
+            const getData = async () => {
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/product`);
                 const bestSellingProducts = data.filter((item) => item.best_seller === "Yes");
                 setBestSellers(bestSellingProducts);
-            })
-            .catch((error) => console.error('Error fetching data:', error));
-    }, []);
+            };
+            getData();
+        }, []);
+
 
     return (
         <div>

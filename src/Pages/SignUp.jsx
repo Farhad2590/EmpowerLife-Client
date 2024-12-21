@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import animationData from "../assets/annimation/login.json";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,23 +26,65 @@ const SignUp = () => {
     e.preventDefault();
     const form = e.target
     const email = form.email.value
-    // const name = form.name.value
-    // const photo = form.photo.value
     const pass = form.password.value
-    console.log("Form Data:", formData);
+
     const result = await createUser(email, pass)
     console.log(result.user);
-    navigate('/');
-    // Add your submit logic here
+    if (result.user) {
+
+      const userData = {
+        email: result.user.email,
+        name: form.name.value,
+        photo: result.user.photoURL || "https://i.ibb.co/ScLz5b5/pic1.jpg",
+        createdAt: new Date().toISOString(),
+        role : "user"
+      };
+      console.log(userData);
+
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, userData);
+
+      if (response.data.insertedId) {
+        console.log("User successfully added to the database:", response.data);
+        navigate('/'); // Navigate after successful addition
+      } else {
+        console.error("Failed to add user to the database.");
+      }
+    } else {
+      console.error("User creation failed, no user object returned.");
+    }
   };
 
   const handleGoogleSignIn = async () => {
     try {
+      // Step 1: Sign in with Google
       const result = await signInWithGoogle();
-      console.log(result.user);
-      navigate('/');
+      console.log("Signed-in User:", result.user);
+
+      if (result.user) {
+        // Step 2: Construct the user data
+        const userData = {
+          email: result.user.email,
+          name: result.user.displayName,
+          photo: result.user.photoURL || "https://i.ibb.co/ScLz5b5/pic1.jpg",
+          createdAt: new Date().toISOString(),
+          role : "user"
+        };
+        console.log("User Data:", userData);
+
+        // Step 3: Post the user data to the database
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, userData);
+
+        if (response.data.insertedId) {
+          console.log("User successfully added to the database:", response.data);
+          navigate('/'); // Navigate after successful addition
+        } else {
+          console.error("Failed to add user to the database.");
+        }
+      } else {
+        console.error("Google sign-in failed, no user object returned.");
+      }
     } catch (err) {
-      console.error(err);
+      console.error("Error during Google sign-in or data submission:", err);
     }
   };
 

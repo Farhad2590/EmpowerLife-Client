@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-
-import { ShoppingCart, CheckCircle } from '@mui/icons-material';
+import { Link } from "react-router-dom";
 import DynamicHeader from '../Components/SharedComponets/DynamicHeader';
-import { FaCheckCircle, FaSearch, FaShoppingCart } from 'react-icons/fa';
+import { FaCheckCircle, FaMapPin, FaSearch, FaTrash } from 'react-icons/fa';
 import { CircularProgress } from '@mui/material';
+import axios from 'axios';
+import UseAdmin from '../hooks/useAdmin';
 
 const Product = () => {
+    const [isAdmin] = UseAdmin();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -14,42 +16,43 @@ const Product = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        // Fetch product data from public/data.json
-        fetch('/data.json')
-            .then(response => response.json())
-            .then(data => {
-                setProducts(data);
-                setFilteredProducts(data);
-                setIsLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                setIsLoading(false);
-            });
+        const getData = async () => {
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/product`);
+            setProducts(data);
+            setFilteredProducts(data);
+            setIsLoading(false);
+        };
+        getData();
     }, []);
 
     useEffect(() => {
-        // Filter and sort products based on user selections
         let filtered = [...products];
-
         if (selectedCategory !== 'All') {
             filtered = filtered.filter(product => product.category_name === selectedCategory);
         }
-
         if (searchTerm) {
             filtered = filtered.filter(product =>
                 product.product_name.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
-
         if (sortBy === 'price-asc') {
             filtered.sort((a, b) => a.price - b.price);
         } else if (sortBy === 'price-desc') {
             filtered.sort((a, b) => b.price - a.price);
         }
-
         setFilteredProducts(filtered);
     }, [products, selectedCategory, sortBy, searchTerm]);
+
+    const handleDelete = async (productId) => {
+        try {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/product/${productId}`);
+            const updatedProducts = products.filter(product => product._id !== productId);
+            setProducts(updatedProducts);
+            setFilteredProducts(updatedProducts);
+        } catch (error) {
+            console.error('Error deleting product:', error);
+        }
+    };
 
     const categories = ['All', ...new Set(products.map(product => product.category_name))];
 
@@ -58,7 +61,6 @@ const Product = () => {
             <DynamicHeader title="All Products" />
             <div className="flex justify-between items-center mb-6 p-4 rounded-lg shadow-md bg-white">
                 <div className="flex items-center gap-6">
-                    {/* Category Dropdown */}
                     <div className="min-w-[150px]">
                         <label className="block font-semibold text-gray-600">Category</label>
                         <select
@@ -74,7 +76,6 @@ const Product = () => {
                         </select>
                     </div>
 
-                    {/* Sort By Dropdown */}
                     <div className="min-w-[150px]">
                         <label className="block font-semibold text-gray-600">Sort By</label>
                         <select
@@ -88,7 +89,6 @@ const Product = () => {
                     </div>
                 </div>
 
-                {/* Search Input */}
                 <div className="relative w-64">
                     <input
                         type="text"
@@ -103,7 +103,6 @@ const Product = () => {
                 </div>
             </div>
 
-
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
                 {isLoading ? (
                     <div className="col-span-full flex justify-center items-center">
@@ -115,16 +114,29 @@ const Product = () => {
                             key={product.id}
                             className="max-w-[360px] rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 relative p-4"
                         >
-                            {product.best_seller === 'Yes' && (
-                                <div className="absolute top-4 right-4 bg-[#86c7d2] text-white px-3 py-1 text-xs font-bold rounded-lg flex items-center gap-1">
-                                    <FaCheckCircle />
-                                    Best Seller
-                                </div>
-                            )}
-                            <div
-                                className="w-full h-[200px] bg-cover bg-center rounded-lg mb-4"
-                                style={{ backgroundImage: `url(${product.image_url})` }}
-                            />
+                            <div className="relative">
+                                <div
+                                    className="w-full h-[200px] bg-cover bg-center rounded-lg mb-4"
+                                    style={{ backgroundImage: `url(${product.image_url})` }}
+                                />
+                                {isAdmin && (
+                                    <button
+                                        onClick={() => handleDelete(product._id)}
+                                        className="absolute top-2 left-2 bg-red-500 bg-opacity-90 text-white p-2 rounded-full hover:bg-red-600 transition-colors duration-200 group"
+                                    >
+                                        <FaTrash className="w-4 h-4" />
+                                        <span className="absolute left-full ml-2 bg-red-500 text-white px-2 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                            Delete Product
+                                        </span>
+                                    </button>
+                                )}
+                                {product.best_seller === 'Yes' && (
+                                    <div className="absolute top-2 right-2 bg-[#86c7d2] text-white px-3 py-1 text-xs font-bold rounded-lg flex items-center gap-1">
+                                        <FaCheckCircle />
+                                        Best Seller
+                                    </div>
+                                )}
+                            </div>
                             <div>
                                 <h5 className="text-xl font-semibold text-gray-800 mb-2">{product.product_name}</h5>
                                 <p className="text-sm text-gray-600 mb-4">{product.product_description}</p>
@@ -132,18 +144,21 @@ const Product = () => {
                                 <div className="space-y-1">
                                     {product.product_feature.map((feature, index) => (
                                         <div key={index} className="flex items-center text-sm text-gray-600">
-                                             <FaCheckCircle className="text-[#86c7d2]" />
-                                             {feature}
+                                            <FaCheckCircle className="text-[#86c7d2] mr-2" />
+                                            {feature}
                                         </div>
                                     ))}
                                 </div>
                             </div>
                             <div className="flex justify-between items-center px-2 py-3">
                                 <p className="text-lg font-bold text-gray-800">${product.price}</p>
-                                <button className="flex items-center gap-2 bg-[#86c7d2] text-white px-4 py-2 rounded-full hover:bg-[#1c6b79] transition">
-                                    <FaShoppingCart />
-                                    Buy Now
-                                </button>
+                                <Link
+                                    to={`/product/${product._id}`}
+                                    className="flex items-center gap-2 bg-[#86c7d2] text-white px-4 py-2 rounded-full hover:bg-[#1c6b79] transition"
+                                >
+                                    <FaMapPin className="w-4 h-4" />
+                                    View Details
+                                </Link>
                             </div>
                             <p className="text-xs text-gray-500 text-right p-2">{product.product_stock} in stock</p>
                         </div>

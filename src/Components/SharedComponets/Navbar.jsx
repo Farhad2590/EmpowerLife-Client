@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaProductHunt, FaBlog, FaEnvelope, FaBars, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaProductHunt, FaBlog, FaEnvelope, FaBars, FaUserCircle, FaShoppingCart } from "react-icons/fa";
 import { AiOutlineLogout } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
+import UseAdmin from "../../hooks/useAdmin";
+import { MdDashboard } from "react-icons/md";
+
 
 function Navbar() {
   const { logOut, user } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isAdmin] = UseAdmin();
+  // console.log(isAdmin);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -55,7 +60,12 @@ function Navbar() {
         </Link>
 
         {user?.email ? (
-          <div className="relative">
+          <div className="relative flex items-center space-x-4">
+            {/* Cart Icon */}
+            <Link to="/cart" className="text-white hover:text-[#86c7d2]">
+              <FaShoppingCart className="w-6 h-6" />
+            </Link>
+
             {/* Avatar and Dropdown */}
             <button
               onClick={toggleDropdown}
@@ -70,18 +80,27 @@ function Navbar() {
 
             {isDropdownOpen && (
               <div
-                className="absolute bg-white text-black rounded shadow-md right-0 mt-2 w-40 z-50" // z-index ensures dropdown is on top
-                style={{ top: "100%" }} // Position above the avatar (100% means full height of the avatar)
+                className="absolute bg-white text-black rounded shadow-md right-0 mt-2 w-40 z-50"
+                style={{ top: "100%" }}
               >
                 <div className="px-4 py-2 text-black">
-                  <span>{user.displayName}</span> {/* Display username */}
+                  <span>{user.displayName}</span>
                 </div>
+
+                <Link
+                  to="/dashboard"
+                  className="px-2 py-2 hover:bg-gray-200 w-full text-left flex items-center space-x-1"
+                >
+                  <MdDashboard className="mr-1" />
+                  <span>Dashboard</span>
+                </Link>
+
                 <button
                   onClick={logOut}
                   className="px-2 py-2 hover:bg-gray-200 w-full text-left flex items-center space-x-1"
                 >
                   <AiOutlineLogout />
-                  Logout
+                  <span>Logout</span>
                 </button>
               </div>
             )}
@@ -94,6 +113,7 @@ function Navbar() {
             Join Us
           </Link>
         )}
+
       </div>
 
       {/* Mobile Menu */}

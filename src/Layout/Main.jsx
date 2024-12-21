@@ -1,26 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/SharedComponets/Navbar";
-import { Box } from "@mui/material";
 import Footer from "../Components/SharedComponets/Footer";
+import ChatBot from "../Components/SharedComponets/ChatBot";
+// import ChatBot from "../Components/ChatBot";
 
 const Main = () => {
     return (
-        <div>
+        <div className="min-h-screen flex flex-col">
             <Navbar />
-            <Box
-                sx={{
-                    width: '95%', // Set width to 95%
-                    margin: '0 auto', // Centers the content horizontally
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    minHeight: '100vh', // Optional: to ensure content stretches vertically if needed
-                }}
-            >
-
+            <div className="w-[95%] mx-auto flex flex-col items-center flex-grow">
                 <Outlet />
-            </Box>
+            </div>
             <Footer />
+            <ChatBot />
         </div>
     );
 };

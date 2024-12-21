@@ -1,18 +1,27 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
 import {
-  RouterProvider,
+  RouterProvider
 } from "react-router-dom";
-import "./index.css";
-import { router } from "./routes/Routes";
-import AuthProvider from "./providers/AuthProvider";
+import AuthProvider from './providers/AuthProvider';
+import { Toaster } from 'react-hot-toast';
+import { router } from './routes/Routes';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient();
 
 
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-     <AuthProvider>
-    <RouterProvider router={router} />
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <Toaster />
+      </QueryClientProvider>
     </AuthProvider>
-  </React.StrictMode>
-);
+  </StrictMode>,
+)
