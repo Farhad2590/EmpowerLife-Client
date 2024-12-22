@@ -51,7 +51,6 @@ const Cart = () => {
       .toFixed(2);
   };
 
-  // Update this function
   const handleCheckout = () => {
     if (selectedItems.size === 0) {
       alert('Please select items to checkout');
@@ -59,15 +58,26 @@ const Cart = () => {
     }
 
     const selectedProducts = cartItems.filter(item => selectedItems.has(item._id));
-    
+
+    // Include product IDs in the data passed to the checkout page
+    const selectedProductsWithIds = selectedProducts.map(item => ({
+      productId: item._id, 
+      productImage : item.productImage,
+      productName: item.productName,
+      totalPrice: item.totalPrice,
+      unitPrice: item.unitPrice,
+      quantity: item.quantity,
+    }));
+
     // Navigate to checkout page with selected products data
     navigate('/checkout', {
       state: {
-        selectedProducts,
-        totalAmount: calculateTotal()
-      }
+        selectedProducts: selectedProductsWithIds,
+        totalAmount: calculateTotal(),
+      },
     });
   };
+
 
   if (loading) {
     return (
@@ -80,7 +90,7 @@ const Cart = () => {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
-      
+
       {cartItems.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
           <p className="text-xl text-gray-600">Your cart is empty</p>
@@ -88,7 +98,7 @@ const Cart = () => {
       ) : (
         <>
           <div className="mb-4 flex items-center">
-            <button 
+            <button
               onClick={toggleSelectAll}
               className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
             >
@@ -105,12 +115,12 @@ const Cart = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {cartItems.map((item) => (
-              <div 
-                key={item._id} 
+              <div
+                key={item._id}
                 className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
               >
                 <div className="p-4 flex items-center">
-                  <button 
+                  <button
                     onClick={() => toggleSelectItem(item._id)}
                     className="flex items-center justify-center"
                   >
@@ -134,10 +144,10 @@ const Cart = () => {
                     {item.productCategory}
                   </div>
                 </div>
-                
+
                 <div className="p-4 flex flex-col flex-grow">
                   <h3 className="text-xl font-semibold mb-2">{item.productName}</h3>
-                  
+
                   <div className="flex justify-between items-center mb-4">
                     <div className="text-gray-600">
                       Unit Price: <span className="font-semibold text-green-600">${item.unitPrice}</span>
@@ -146,11 +156,11 @@ const Cart = () => {
                       Total: <span className="font-semibold text-green-600">${item.totalPrice}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex justify-between items-center mt-auto">
-                    <button 
+                    <button
                       className="text-red-500 hover:text-red-700"
-                      onClick={() => {/* Add remove item handler */}}
+                      onClick={() => {/* Add remove item handler */ }}
                     >
                       <FaTrash />
                     </button>
@@ -159,7 +169,7 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold text-gray-800">Cart Summary</h2>
@@ -167,19 +177,19 @@ const Cart = () => {
                 Total: ${calculateTotal()}
               </div>
             </div>
-            
+
             <div className="space-y-4">
               <div className="flex justify-between text-gray-600">
                 <span>Selected Items:</span>
                 <span>{selectedItems.size}</span>
               </div>
-              
-              <button 
+
+              <button
                 onClick={handleCheckout}
                 disabled={selectedItems.size === 0}
                 className={`w-full py-3 rounded-lg text-white transition-colors
-                  ${selectedItems.size === 0 
-                    ? 'bg-gray-400 cursor-not-allowed' 
+                  ${selectedItems.size === 0
+                    ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-[#68b5c2] hover:bg-blue-700'}`}
               >
                 Proceed to Checkout

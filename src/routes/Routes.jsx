@@ -22,6 +22,11 @@ import MakeAnnouncement from "../Pages/AdminPages/MakeAnnouncement";
 import ManageBlogs from "../Pages/WriterPages/ManageBlogs";
 import PaymentFrom from "../Pages/PaymentFrom";
 import MyOrders from "../Pages/UserPage/MyOrders";
+import PaymentSummary from "../Pages/PaymentSummary";
+import Payments from "../Pages/Payments";
+import PaymentHistory from "../Pages/UserPage/PaymentHistory";
+import PurchasedProducts from "../Pages/UserPage/PurchasedProducts";
+import PrivateRoute from "../routes/PrivateRoute";
 // import ApartmentDetails from "../Components/ApartmentDetails";
 
 export const router = createBrowserRouter([
@@ -35,27 +40,35 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/product",
-                element: <Product />,
+                element: <PrivateRoute><Product /></PrivateRoute>,
             },
             {
                 path: "/product/:id",
-                element: <ProductDetails />,
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
             },
             {
                 path: "/contactUs",
-                element: <ContactUs />,
+                element: <PrivateRoute><ContactUs /></PrivateRoute>,
             },
             {
                 path: "/cart",
-                element: <Cart />,
+                element: <PrivateRoute><Cart /></PrivateRoute>,
             },
             {
                 path: "/blogs",
-                element: <BlogPage />,
+                element: <PrivateRoute><BlogPage /></PrivateRoute>,
             },
             {
                 path: "/checkout",
-                element: <PaymentFrom />,
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
+            },
+            {
+                path: "/payments",
+                element: <PrivateRoute><Payments /></PrivateRoute>,
+            },
+            {
+                path: "/paymentSummary",
+                element: <PrivateRoute><PaymentSummary /></PrivateRoute>,
             },
 
         ]
@@ -97,6 +110,15 @@ export const router = createBrowserRouter([
                 path: "manageBlogs",
                 element: <ManageBlogs />,
             },
+            {
+                path: "paymentHistory",
+                element: <PaymentHistory />,
+            },
+            {
+                path: "purchasedProducts",
+                element: <PurchasedProducts />,
+            },
+            
 
             //User
             {
@@ -104,8 +126,12 @@ export const router = createBrowserRouter([
                 element: <Profile />,
             },
             {
-                path: "myOrders",
-                element: <MyOrders />,
+                path: "paymentHistory",
+                element: <PaymentHistory />,
+            },
+            {
+                path: "purchasedProducts",
+                element: <PurchasedProducts />,
             },
 
         ]

@@ -26,8 +26,10 @@ const ManageUser = () => {
   };
 
   const handleMakeWriter = async (userId) => {
+    console.log(userId);
+    
     try {
-      await axios.patch(`${import.meta.env.VITE_API_URL}/users/${userId}/role`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/updateUserRole/${userId}`, {
         role: 'writer'
       });
       fetchAllUsers(); // Refresh the list
@@ -82,7 +84,7 @@ const ManageUser = () => {
                   </td>
                   <td className="px-6 py-4 text-sm">
                     <button
-                      onClick={() => handleMakeWriter(user._id)}
+                      onClick={() => handleMakeWriter(user.email)}
                       disabled={user.role === 'writer'}
                       className={`px-4 py-2 rounded-md text-white ${
                         user.role === 'writer'

@@ -1,24 +1,32 @@
 [
-    {
-      "title": "25% Off Your First Purchase",
-      "code": "SUMMER25",
-      "discountPercentage": 25
-      
-    },
-    {
-      "title": "Free Shipping on Orders Over $50",
-      "code": "WELCOME15",
-      "discountPercentage": 15
-    },
-    {
-      "title": "Discount upto 50%",
-      "code": "FLASH50",
-      "discountPercentage": 50
-    },
-    {
-      "title": "Big Deal & Discount upto 25%",
-      "code": "winter25",
-      "discountPercentage": 25
-    }
-  ]
-  
+  {
+    "title": "New Product Launch",
+    "message": "Check out our latest product now available in the store!",
+    "time": "2024-12-22 10:30 AM",
+    "isRead": false
+  },
+  {
+    "title": "Order Update",
+    "message": "Your order #12345 has been shipped. Track your package now.",
+    "time": "2024-12-21 04:15 PM",
+    "isRead": true
+  },
+  {
+    "title": "Holiday Sale",
+    "message": "Don't miss our holiday sale with up to 50% off!",
+    "time": "2024-12-20 09:00 AM",
+    "isRead": false
+  },
+  {
+    "title": "Account Reminder",
+    "message": "Your subscription will expire soon. Renew to continue enjoying our services.",
+    "time": "2024-12-19 03:45 PM",
+    "isRead": true
+  },
+  {
+    "title": "System Update",
+    "message": "We are updating our systems tonight from 12:00 AM to 2:00 AM. Expect downtime during this period.",
+    "time": "2024-12-18 11:00 AM",
+    "isRead": false
+  }
+]

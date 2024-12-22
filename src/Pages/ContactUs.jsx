@@ -8,18 +8,61 @@ const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
+
+  const [status, setStatus] = useState({
+    show: false,
+    success: false,
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({ name: '', email: '', message: '' });
+
+    setIsSubmitting(true);
+
+    try {
+      // Create FormData object
+      const form = new FormData();
+      form.append('access_key', '8c3e5655-15a7-49ed-8dba-2ac610dca926');
+      form.append('name', formData.name);
+      form.append('email', formData.email);
+      form.append('message', formData.message);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: form,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus({
+          show: true,
+          success: true,
+          message: 'Message sent successfully!',
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(result.message || 'Submission failed.');
+      }
+    } catch (error) {
+      setStatus({
+        show: true,
+        success: false,
+        message: error.message || 'Something went wrong. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setStatus({ show: false, success: false, message: '' }), 5000);
+    }
   };
 
   return (
@@ -71,11 +114,24 @@ const ContactUs = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#68b5c2] text-white py-2 rounded-lg font-bold hover:bg-teal-600 transition"
+              disabled={isSubmitting}
+              className={`w-full py-2 rounded-lg font-bold transition ${
+                isSubmitting ? 'bg-gray-400' : 'bg-[#68b5c2] hover:bg-teal-600'
+              } text-white`}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
+
+          {status.show && (
+            <div
+              className={`mt-4 p-3 rounded ${
+                status.success ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+              }`}
+            >
+              {status.message}
+            </div>
+          )}
         </div>
 
         {/* Right Section: Lottie Animation */}

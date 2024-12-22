@@ -1,52 +1,115 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ImCross } from "react-icons/im";
 import { IoSendOutline } from "react-icons/io5";
 import { FiMessageCircle } from "react-icons/fi";
+import axios from 'axios';
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hi! I'm your virtual assistant. How can I help you today?", isBot: true }
+    { text: "Welcome to AssistiveCare Support! I can help you find information about our assistive equipment categories and available discounts. How may I assist you today?", isBot: true }
   ]);
   const [inputMessage, setInputMessage] = useState('');
+  const [coupons, setCoupons] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Predefined responses based on keywords
+  useEffect(() => {
+    fetchAllCoupons();
+  }, []);
+
+  const fetchAllCoupons = async () => {
+    try {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/cupons`);
+      setCoupons(data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch coupons:", error);
+      setLoading(false);
+    }
+  };
+
+  // Function to format coupon list
+  const formatCouponsMessage = () => {
+    if (loading) return "Loading available coupons...";
+    if (coupons.length === 0) return "No active coupons at the moment. Please check back later!";
+
+    const couponList = coupons.map(coupon => 
+      `- ${coupon.code}: ${coupon.discount}% off ${coupon.category === 'all' ? 'all items' : coupon.category} aids`
+    ).join('\n');
+
+    return `Current Active Offers:\n\n${couponList}\n\nWould you like details about any specific coupon?`;
+  };
+
+  // Function to find specific coupon details
+  const findCouponDetails = (code) => {
+    return coupons.find(coupon => 
+      coupon.code.toLowerCase() === code.toLowerCase()
+    );
+  };
+
+  // Predefined responses based on categories and keywords
   const getBotResponse = (message) => {
     const lowerMessage = message.toLowerCase();
     
+    // General greetings
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-      return "Hello! How can I assist you today?";
-    }
-    
-    if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-      return "Our pricing plans start from $10/month. Would you like to know more about our pricing packages?";
-    }
-    
-    if (lowerMessage.includes('contact') || lowerMessage.includes('support')) {
-      return "You can reach our support team at support@example.com or call us at +1-234-567-8900";
-    }
-    
-    if (lowerMessage.includes('location') || lowerMessage.includes('address')) {
-      return "We are located at 123 Business Street, Tech City, TC 12345";
-    }
-    
-    if (lowerMessage.includes('booking') || lowerMessage.includes('appointment')) {
-      return "You can book an appointment through our website's booking section or call our office directly.";
-    }
-    
-    if (lowerMessage.includes('hours') || lowerMessage.includes('open')) {
-      return "We are open Monday to Friday, 9:00 AM to 6:00 PM EST.";
-    }
-    
-    if (lowerMessage.includes('thank')) {
-      return "You're welcome! Is there anything else I can help you with?";
-    }
-    
-    if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
-      return "Thank you for chatting with us! Have a great day!";
+      return "Hello! I can provide information about our assistive equipment categories and current discounts. What would you like to know?";
     }
 
-    return "I understand you're asking about " + message + ". Let me connect you with our support team for more detailed information. Meanwhile, you can check our FAQ section on our website.";
+    // Coupon and discount related responses
+    if (lowerMessage.includes('coupon') || lowerMessage.includes('discount') || lowerMessage.includes('offer')) {
+      return formatCouponsMessage();
+    }
+
+    // Check for specific coupon code inquiries
+    const mentionedCoupon = coupons.find(coupon => 
+      lowerMessage.includes(coupon.code.toLowerCase())
+    );
+
+    if (mentionedCoupon) {
+      return `${mentionedCoupon.code} offers ${mentionedCoupon.discount}% off on ${mentionedCoupon.category === 'all' ? 'all products' : mentionedCoupon.category} aids!\n\nDetails:\n- Discount: ${mentionedCoupon.discount}%\n- Category: ${mentionedCoupon.category}\n- Valid until: ${new Date(mentionedCoupon.validUntil).toLocaleDateString()}\n${mentionedCoupon.description}\n\nWould you like to start shopping with this coupon?`;
+    }
+
+    // Category specific responses
+    if (lowerMessage.includes('cognitive')) {
+      return "Our Cognitive Aids include:\n- Memory assistance devices\n- Task organizers\n- Medication reminders\n- Time management tools\n- Educational support devices\nWould you like specific information about any of these items?";
+    }
+
+    if (lowerMessage.includes('daily') || lowerMessage.includes('living')) {
+      return "Our Daily Living Aids include:\n- Kitchen assistance tools\n- Bathroom safety equipment\n- Dressing aids\n- Eating and drinking aids\n- Home organization solutions\nWhich area would you like to know more about?";
+    }
+
+    if (lowerMessage.includes('vision')) {
+      return "Our Vision Aids include:\n- Magnifiers\n- Reading aids\n- Navigation assistance\n- Screen readers\n- Braille equipment\nI can provide more details about any of these products.";
+    }
+
+    if (lowerMessage.includes('hearing')) {
+      return "Our Hearing Aids include:\n- Digital hearing devices\n- Amplification systems\n- Visual alert systems\n- TV listening devices\n- Phone amplifiers\nWould you like to learn more about specific hearing solutions?";
+    }
+
+    if (lowerMessage.includes('mobility')) {
+      return "Our Mobility Aids include:\n- Wheelchairs\n- Walkers\n- Canes\n- Transfer aids\n- Mobility scooters\nI can provide detailed information about any of these mobility solutions.";
+    }
+
+    // Bulk purchase inquiries
+    if (lowerMessage.includes('bulk') || lowerMessage.includes('wholesale')) {
+      return "We offer special discounts for bulk purchases and institutional buyers. Our bulk purchase program includes:\n- Volume-based discounts\n- Custom pricing\n- Priority shipping\nWould you like to speak with our bulk sales specialist?";
+    }
+
+    // Seasonal offers
+    if (lowerMessage.includes('seasonal') || lowerMessage.includes('holiday')) {
+      const seasonalCoupons = coupons.filter(coupon => coupon.type === 'seasonal');
+      if (seasonalCoupons.length > 0) {
+        const seasonalList = seasonalCoupons.map(coupon => 
+          `- ${coupon.code}: ${coupon.discount}% off ${coupon.category === 'all' ? 'all items' : coupon.category}`
+        ).join('\n');
+        return `Current Seasonal Offers:\n\n${seasonalList}\n\nWould you like details about any of these offers?`;
+      }
+      return "Stay tuned for our upcoming seasonal promotions! Would you like to join our mailing list for updates?";
+    }
+
+    // Default response
+    return "I understand you're asking about " + message + ". For the most accurate information about our assistive equipment and current discounts, I'd be happy to connect you with one of our specialists. Would you like me to arrange that?";
   };
 
   const handleSendMessage = (e) => {
@@ -68,14 +131,13 @@ const ChatBot = () => {
     setInputMessage('');
   };
 
-  // Rest of your component code remains the same
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {isOpen ? (
-        <div className="bg-white rounded-lg shadow-xl w-80 h-96 flex flex-col">
+        <div className="bg-white rounded-lg shadow-xl w-96 h-[32rem] flex flex-col">
           {/* Chat Header */}
           <div className="bg-[#68b5c2] text-white p-4 rounded-t-lg flex justify-between items-center">
-            <h3 className="font-semibold">Chat Support</h3>
+            <h3 className="font-semibold">AssistiveCare Support</h3>
             <button
               onClick={() => setIsOpen(false)}
               className="text-white hover:text-gray-200"
@@ -98,7 +160,9 @@ const ChatBot = () => {
                       : 'bg-[#68b5c2] text-white'
                   }`}
                 >
-                  {message.text}
+                  {message.text.split('\n').map((line, i) => (
+                    <p key={i} className={i > 0 ? 'mt-1' : ''}>{line}</p>
+                  ))}
                 </div>
               </div>
             ))}

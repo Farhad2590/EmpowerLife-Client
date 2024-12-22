@@ -26,12 +26,16 @@ const Dashboard = () => {
     { name: 'Writer Profile', path: '/dashboard/writerProfile', icon: <FaUser /> },
     // { name: 'Write Article', path: '/dashboard/manageBlogs', icon: <FaPen /> },
     { name: 'Manage Blogs', path: '/dashboard/manageBlogs', icon: <FaTags /> },
+    { name: 'Purchase Products', path: '/dashboard/purchasedProducts', icon: <FaPlusSquare /> },
+    { name: 'Payment History', path: '/dashboard/paymentHistory', icon: <FaTags /> },
+
   ];
 
   const userLinks = [
     { name: 'User Profile', path: '/dashboard/userProfile', icon: <FaUser /> },
-    { name: 'Browse Products', path: '/dashboard/browseProducts', icon: <FaPlusSquare /> },
-    { name: 'My Orders', path: '/dashboard/myOrders', icon: <FaTags /> },
+    { name: 'Purchase Products', path: '/dashboard/purchasedProducts', icon: <FaPlusSquare /> },
+    { name: 'Payment History', path: '/dashboard/paymentHistory', icon: <FaTags /> },
+    // { name: 'Manage Blogs', path: '/dashboard/purchasedProducts', icon: <FaTags /> },
   ];
 
   const linksToShow = isAdmin ? adminLinks : isWriter ? writerLinks : userLinks;

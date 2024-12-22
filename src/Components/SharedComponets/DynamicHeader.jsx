@@ -1,10 +1,8 @@
-// import React from "react";
 import { FaStar } from "react-icons/fa"; // React Icons (for Sparkle effect)
 
 const DynamicHeader = ({ title }) => {
-  // Define animations using Tailwind CSS
   return (
-    <div className="relative py-8 px-8 overflow-hidden flex justify-center items-center ">
+    <div className="relative py-8 px-4 md:px-8 overflow-hidden flex justify-center items-center  text-white">
       <div className="flex flex-col md:flex-row items-center relative">
         {/* Left Wave */}
         <div className="hidden md:block absolute left-[-80px] animate-wave">
@@ -28,12 +26,12 @@ const DynamicHeader = ({ title }) => {
 
         {/* Left Line with Dots */}
         <div className="relative flex flex-col items-center mr-3 mb-2 md:mr-0">
-          <div className="w-32 h-0.5 bg-gradient-to-r from-transparent to-[#68b5c2] transition-all duration-300 transform hover:scale-x-110" />
+          <div className="w-20 md:w-32 h-0.5 bg-gradient-to-r from-transparent to-[#68b5c2] transition-all duration-300 transform hover:scale-x-110" />
           <div className="flex justify-end gap-2 mt-[-8px]">
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-2.5 h-2.5 rounded-full bg-[#68b5c2] animate-pulse"
+                className="w-2 h-2 rounded-full bg-[#68b5c2] animate-pulse"
                 style={{ animationDelay: `${i * 0.2}s` }}
               />
             ))}
@@ -41,9 +39,9 @@ const DynamicHeader = ({ title }) => {
         </div>
 
         {/* Title */}
-        <div className="relative mx-6 group">
+        <div className="relative mx-4 group text-center md:text-left">
           <div className="absolute inset-[-2px] bg-[#68b5c2] opacity-10 rounded-lg blur-md scale-110 transition-all duration-300 group-hover:opacity-20 group-hover:scale-125" />
-          <h1 className="relative px-6 py-3 text-xl font-bold text-white bg-gradient-to-r from-[#68b5c2] to-[#89c9d3] rounded-lg cursor-pointer transform group-hover:scale-105 group-hover:rotate-[-1deg] transition-all duration-300">
+          <h1 className="relative px-6 py-3 text-lg md:text-xl font-bold text-white bg-gradient-to-r from-[#68b5c2] to-[#89c9d3] rounded-lg cursor-pointer transform group-hover:scale-105 group-hover:rotate-[-1deg] transition-all duration-300">
             {title}
           </h1>
 
@@ -58,12 +56,12 @@ const DynamicHeader = ({ title }) => {
 
         {/* Right Line with Dots */}
         <div className="relative flex flex-col items-center ml-3 mb-2 md:ml-0">
-          <div className="w-32 h-0.5 bg-gradient-to-l from-transparent to-[#68b5c2] transition-all duration-300 transform hover:scale-x-110" />
+          <div className="w-20 md:w-32 h-0.5 bg-gradient-to-l from-transparent to-[#68b5c2] transition-all duration-300 transform hover:scale-x-110" />
           <div className="flex justify-start gap-2 mt-[-8px]">
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-2.5 h-2.5 rounded-full bg-[#68b5c2] animate-pulse"
+                className="w-2 h-2 rounded-full bg-[#68b5c2] animate-pulse"
                 style={{ animationDelay: `${i * 0.2}s` }}
               />
             ))}

@@ -1,61 +1,82 @@
 import { useState, useEffect } from "react";
-import DynamicHeader from "../../Components/SharedComponets/DynamicHeader";
-import { LuBellRing, LuCalendar, LuClock, LuSend } from "react-icons/lu";
-// import useAxiosPublic from "../../hooks/UseAxiosPublic";
-import toast from "react-hot-toast";
+import { LuBellRing, LuCalendar, LuClock, LuSend, LuPackage } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import axios from "axios";
 import { Pagination } from "swiper/modules";
+import axios from "axios";
+import toast from "react-hot-toast";
+import DynamicHeader from "../../Components/SharedComponets/DynamicHeader";
 
 const MakeAnnouncement = () => {
-  // const axiosPublic = useAxiosPublic();
   const [announcements, setAnnouncements] = useState([]);
   const [newAnnouncement, setNewAnnouncement] = useState({
     title: "",
-    description: "",
+    message: "",
+    type: "general", // general, order, promotion, maintenance
+    priority: "normal", // normal, urgent
+    isRead: false
   });
+
   const API_URL = import.meta.env.VITE_API_URL;
 
   // Fetch Announcements
   useEffect(() => {
-    const fetchAnnouncements = async () => {
-      try {
-        const { data } = await axios.get(`${API_URL}/announcements`);
-        setAnnouncements(data);
-      } catch (error) {
-        console.error("Failed to fetch announcements:", error);
-      }
-    };
-
     fetchAnnouncements();
-  }, [axios]);
+  }, []);
+
+  const fetchAnnouncements = async () => {
+    try {
+      const { data } = await axios.get(`${API_URL}/announcements`);
+      setAnnouncements(data);
+    } catch (error) {
+      console.error("Failed to fetch announcements:", error);
+      toast.error("Failed to load announcements");
+    }
+  };
 
   // Handle Input Changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewAnnouncement((prev) => ({ ...prev, [name]: value }));
+    setNewAnnouncement(prev => ({ ...prev, [name]: value }));
   };
 
   // Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const announcementDetails = {
       ...newAnnouncement,
+      time: new Date().toLocaleString(),
       createdAt: new Date().toISOString(),
     };
 
     try {
       const { data } = await axios.post(`${API_URL}/newAnnouncement`, announcementDetails);
       if (data.insertedId) {
-        setAnnouncements((prev) => [announcementDetails, ...prev]);
-        toast.success("Announcement sent successfully!");
-        setNewAnnouncement({ title: "", description: "" });
+        setAnnouncements(prev => [announcementDetails, ...prev]);
+        toast.success("Announcement published successfully!");
+        setNewAnnouncement({
+          title: "",
+          message: "",
+          type: "general",
+          priority: "normal",
+          isRead: false
+        });
       }
     } catch (error) {
-      console.error("Failed to send announcement:", error);
-      toast.error("Failed to send announcement.");
+      console.error("Failed to publish announcement:", error);
+      toast.error("Failed to publish announcement");
+    }
+  };
+
+  // Get announcement type icon
+  const getAnnouncementIcon = (type) => {
+    switch (type) {
+      case 'order':
+        return <LuPackage className="w-5 h-5" />;
+      default:
+        return <LuBellRing className="w-5 h-5" />;
     }
   };
 
@@ -74,7 +95,7 @@ const MakeAnnouncement = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Announcement Title
+                Title
               </label>
               <input
                 type="text"
@@ -89,16 +110,50 @@ const MakeAnnouncement = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Announcement Description
+                Message
               </label>
               <textarea
-                name="description"
-                value={newAnnouncement.description}
+                name="message"
+                value={newAnnouncement.message}
                 onChange={handleInputChange}
-                placeholder="Enter announcement details"
-                className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#68b5c2] focus:border-transparent transition-all h-40"
+                placeholder="Enter announcement message"
+                className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#68b5c2] focus:border-transparent transition-all h-32"
                 required
               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Type
+                </label>
+                <select
+                  name="type"
+                  value={newAnnouncement.type}
+                  onChange={handleInputChange}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#68b5c2] focus:border-transparent transition-all"
+                >
+                  <option value="general">General</option>
+                  <option value="order">Order Update</option>
+                  <option value="promotion">Promotion</option>
+                  <option value="maintenance">Maintenance</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Priority
+                </label>
+                <select
+                  name="priority"
+                  value={newAnnouncement.priority}
+                  onChange={handleInputChange}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#68b5c2] focus:border-transparent transition-all"
+                >
+                  <option value="normal">Normal</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
             </div>
 
             <button
@@ -111,7 +166,7 @@ const MakeAnnouncement = () => {
           </form>
         </div>
 
-        {/* Announcements List with Slider */}
+        {/* Announcements List */}
         <div className="bg-white rounded-xl shadow-md p-6">
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <LuClock className="w-6 h-6 text-[#68b5c2]" />
@@ -130,14 +185,27 @@ const MakeAnnouncement = () => {
             >
               {announcements.map((announcement, index) => (
                 <SwiperSlide key={index}>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 hover:border-[#68b5c2] transition-colors duration-200">
+                  <div className={`bg-gray-50 p-4 rounded-lg border ${
+                    announcement.priority === 'urgent' ? 'border-red-300' : 'border-gray-100'
+                  } hover:border-[#68b5c2] transition-colors duration-200`}>
+                    <div className="flex items-center gap-2 mb-2">
+                      {getAnnouncementIcon(announcement.type)}
+                      <span className="text-sm font-medium text-gray-500 capitalize">
+                        {announcement.type}
+                      </span>
+                      {announcement.priority === 'urgent' && (
+                        <span className="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">
+                          Urgent
+                        </span>
+                      )}
+                    </div>
                     <h4 className="font-semibold text-lg text-[#68b5c2] mb-2">
                       {announcement.title}
                     </h4>
-                    <p className="text-gray-600 mb-3">{announcement.description}</p>
+                    <p className="text-gray-600 mb-3">{announcement.message}</p>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <LuCalendar className="w-4 h-4" />
-                      <span>{new Date(announcement.createdAt).toLocaleString()}</span>
+                      <span>{announcement.time}</span>
                     </div>
                   </div>
                 </SwiperSlide>

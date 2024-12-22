@@ -29,7 +29,7 @@ const ManageWriter = () => {
   const handleRemoveMember = async (member) => {
     if (window.confirm('Are you sure you want to remove this writer?')) {
       try {
-        await axios.patch(`${import.meta.env.VITE_API_URL}/users/${member._id}/role`, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/updateUserRole/${member.email}`, {
           role: 'user'
         });
         fetchAllUsers(); // Refresh the list

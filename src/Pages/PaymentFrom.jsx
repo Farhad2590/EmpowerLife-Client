@@ -1,10 +1,12 @@
-import  { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const PaymentForm = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { selectedProducts, totalAmount } = location.state || { selectedProducts: [], totalAmount: 0 };
-  
+
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [couponCode, setCouponCode] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
@@ -14,6 +16,8 @@ const PaymentForm = () => {
   const [discountedTotal, setDiscountedTotal] = useState(null);
 
   const DELIVERY_CHARGE = 100;
+  console.log(selectedProducts);
+  
 
   const handleCouponSubmit = async () => {
     if (couponApplied) {
@@ -81,7 +85,8 @@ const PaymentForm = () => {
       orderDate: new Date().toISOString()
     };
 
-    console.log('Order Data:', orderData);
+    // Navigate to the new page with orderData
+    navigate('/payments', { state: { orderData } });
   };
 
   return (
@@ -96,8 +101,8 @@ const PaymentForm = () => {
             {selectedProducts.map((product) => (
               <div key={product._id} className="flex justify-between items-center border-b pb-4">
                 <div className="flex items-center space-x-4">
-                  <img 
-                    src={product.productImage} 
+                  <img
+                    src={product.productImage}
                     alt={product.productName}
                     className="w-16 h-16 object-cover rounded"
                   />
@@ -116,7 +121,7 @@ const PaymentForm = () => {
         {/* Delivery and Payment Section */}
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4 text-[#68b5c2]">Delivery Information</h2>
-          
+
           {/* Delivery Address */}
           <div className="mb-6">
             <label className="block text-gray-700 mb-2">Delivery Address</label>
@@ -144,11 +149,10 @@ const PaymentForm = () => {
               <button
                 onClick={handleCouponSubmit}
                 disabled={couponApplied}
-                className={`px-4 py-2 rounded-lg ${
-                  couponApplied
+                className={`px-4 py-2 rounded-lg ${couponApplied
                     ? 'bg-gray-300 cursor-not-allowed'
                     : 'bg-[#68b5c2] hover:bg-[#5aa3af] text-white'
-                }`}
+                  }`}
               >
                 Apply
               </button>
