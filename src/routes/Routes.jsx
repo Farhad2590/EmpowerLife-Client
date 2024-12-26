@@ -27,6 +27,8 @@ import Payments from "../Pages/Payments";
 import PaymentHistory from "../Pages/UserPage/PaymentHistory";
 import PurchasedProducts from "../Pages/UserPage/PurchasedProducts";
 import PrivateRoute from "../routes/PrivateRoute";
+import PaymentForm from "../Pages/PaymentFrom";
+import DeliveryStatus from "../Pages/UserPage/DeliveryStatus";
 // import ApartmentDetails from "../Components/ApartmentDetails";
 
 export const router = createBrowserRouter([
@@ -60,7 +62,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/checkout",
-                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
+                element: <PrivateRoute><PaymentForm /></PrivateRoute>,
             },
             {
                 path: "/payments",
@@ -117,6 +119,10 @@ export const router = createBrowserRouter([
             {
                 path: "purchasedProducts",
                 element: <PurchasedProducts />,
+            },
+            {
+                path: "deliveryStatus",
+                element: <DeliveryStatus />,
             },
             
 
